@@ -1,8 +1,0 @@
-# 自定义服务端口号
-server:
-  port: 8089
-
-# 指定配置文件 application-{profile}.properties
-spring:
-  profiles:
-    active: dev

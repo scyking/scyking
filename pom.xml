@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <!-- 基本信息 -->
+    <description>Demo project for Spring Boot</description>
+    <modelVersion>4.0.0</modelVersion>
+    <name>spring-boot-demo</name>
+    <packaging>pom</packaging>
+
+    <!-- 项目说明 -->
     <groupId>com.example</groupId>
     <artifactId>spring-boot-demo</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
 
-    <name>spring-boot-demo</name>
-    <description>Demo project for Spring Boot</description>
-
+    <!-- 继承说明：继承spring boot提供的父工程 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -18,43 +21,28 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
+    <!-- 模块说明 -->
+    <modules>
+        <module>ucenter</module>
+        <module>web</module>
+    </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
+    <!-- 版本说明：统一管理依赖的版本号 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 用户管理模块 -->
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>ucenter</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <!-- web 模块，包含主启动类 -->
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>web</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
