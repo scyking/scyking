@@ -25,11 +25,18 @@
     <modules>
         <module>ucenter</module>
         <module>web</module>
+        <module>common</module>
     </modules>
 
     <!-- 版本说明：统一管理依赖的版本号 -->
     <dependencyManagement>
         <dependencies>
+            <!-- 公共模块 -->
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>common</artifactId>
+                <version>1.0.0</version>
+            </dependency>
             <!-- 用户管理模块 -->
             <dependency>
                 <groupId>com.example</groupId>

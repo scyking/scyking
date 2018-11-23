@@ -6,10 +6,10 @@
 
     <!-- 基本信息 -->
     <groupId>com.example</groupId>
-    <artifactId>ucenter</artifactId>
+    <artifactId>common</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>ucenter</name>
+    <name>common</name>
 
     <!-- 继承父项目 -->
     <parent>
@@ -18,7 +18,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <!-- ucenter 模块相关依赖 -->
+    <!-- common 模块相关依赖 -->
     <dependencies>
     </dependencies>
 
