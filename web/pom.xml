@@ -5,10 +5,10 @@
 
     <!-- 基本信息 -->
     <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>web</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>demo</name>
+    <name>web</name>
 
     <!-- 继承父项目 -->
     <parent>

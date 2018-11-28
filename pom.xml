@@ -24,8 +24,8 @@
     <!-- 模块说明 -->
     <modules>
         <module>ucenter</module>
-        <module>web</module>
         <module>common</module>
+        <module>web</module>
     </modules>
 
     <!-- 版本说明：统一管理依赖的版本号 -->
