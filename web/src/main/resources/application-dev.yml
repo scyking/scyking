@@ -1,4 +1,4 @@
-# Mysql 数据源
+
 spring:
   datasource:
     mysql:
