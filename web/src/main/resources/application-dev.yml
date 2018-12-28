@@ -1,0 +1,12 @@
+
+spring:
+  datasource:
+    mysql:
+      url: jdbc:mysql://127.0.0.1:3306/demo_db?useSSL=false&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+      connectionTimeout: 300
+      maxIdleTime: 600
+      maxPoolSize: 10
+
