@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.scyking</groupId>
-    <artifactId>kapi</artifactId>
+    <artifactId>k-api</artifactId>
     <version>1.0.0</version>
-    <name>kapi</name>
-    <description>kapi</description>
+    <name>k-api</name>
+    <description>k-api</description>
 
     <properties>
         <java.version>1.8</java.version>

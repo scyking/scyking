@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: k-api
+  security:
+    user:
+      name: admin
+      password: 123456
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    ip-address: 127.0.0.1
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+    hostname: ${eureka.instance.ip-address}
+
+  client:
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/
+

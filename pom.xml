@@ -5,24 +5,25 @@
     <!-- 基本信息 -->
     <description>Demo project for Spring Boot</description>
     <modelVersion>4.0.0</modelVersion>
-    <name>spring-boot-demo</name>
+    <name>scyking</name>
     <packaging>pom</packaging>
 
     <!-- 项目说明 -->
     <groupId>com.scyking</groupId>
-    <artifactId>spring-boot-demo</artifactId>
+    <artifactId>scyking</artifactId>
     <version>1.0.0</version>
 
     <!-- 继承说明：继承spring boot提供的父工程 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
+        <version>2.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <!-- 模块说明 -->
     <modules>
+        <module>s-registry</module>
         <module>u-center</module>
         <module>common</module>
         <module>k-api</module>
@@ -40,13 +41,18 @@
             <!-- 用户管理模块 -->
             <dependency>
                 <groupId>com.scyking</groupId>
-                <artifactId>ucenter</artifactId>
+                <artifactId>u-center</artifactId>
                 <version>1.0.0</version>
             </dependency>
-            <!-- web 模块，包含主启动类 -->
+            <!-- 注册中心 -->
             <dependency>
                 <groupId>com.scyking</groupId>
-                <artifactId>web</artifactId>
+                <artifactId>s-registry</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.scyking</groupId>
+                <artifactId>k-api</artifactId>
                 <version>1.0.0</version>
             </dependency>
         </dependencies>
