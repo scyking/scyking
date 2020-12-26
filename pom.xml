@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <!-- 项目说明 -->
-    <groupId>com.example</groupId>
+    <groupId>com.scyking</groupId>
     <artifactId>spring-boot-demo</artifactId>
     <version>1.0.0</version>
 
@@ -23,9 +23,9 @@
 
     <!-- 模块说明 -->
     <modules>
-        <module>ucenter</module>
+        <module>u-center</module>
         <module>common</module>
-        <module>web</module>
+        <module>k-api</module>
     </modules>
 
     <!-- 版本说明：统一管理依赖的版本号 -->
@@ -33,19 +33,19 @@
         <dependencies>
             <!-- 公共模块 -->
             <dependency>
-                <groupId>com.example</groupId>
+                <groupId>com.scyking</groupId>
                 <artifactId>common</artifactId>
                 <version>1.0.0</version>
             </dependency>
             <!-- 用户管理模块 -->
             <dependency>
-                <groupId>com.example</groupId>
+                <groupId>com.scyking</groupId>
                 <artifactId>ucenter</artifactId>
                 <version>1.0.0</version>
             </dependency>
             <!-- web 模块，包含主启动类 -->
             <dependency>
-                <groupId>com.example</groupId>
+                <groupId>com.scyking</groupId>
                 <artifactId>web</artifactId>
                 <version>1.0.0</version>
             </dependency>

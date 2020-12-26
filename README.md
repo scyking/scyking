@@ -4,6 +4,13 @@
 
 基于 spring boot 2.X 开发，用于个人学习使用。
 
+### 目录结构
+```
+spring-boot-demo
+|-- common 公共模块
+|-- ucenter 用户系统
+```
+
 ## 涉及技术纲目
 
 - lombok
