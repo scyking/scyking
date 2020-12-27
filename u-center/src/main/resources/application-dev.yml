@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+
+eureka:
+  instance:
+    prefer-ip-address: false                                                                # 客户端在注册时使用自己的IP而不是主机名，缺省：false
+    ip-address: 127.0.0.1                                                                   # 应用实例IP
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}    # 实例ID
+    hostname: ${eureka.instance.ip-address}                                                 # 应用实例主机名
+
+  client:
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/

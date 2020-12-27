@@ -1,0 +1,17 @@
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+
+eureka:
+  instance:
+    hostname: ${SERVER_HOST}
+  client:
+    registerWithEureka: ${REGISTER_WITH_EUREKA}           # 是否将本身服务注册。单机false，集群true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${EUREKA_SERVICE_URL}           # 集群不注册自身

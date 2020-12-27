@@ -1,0 +1,10 @@
+FROM williamyeh/java8
+MAINTAINER scyking
+VOLUME /root/jar
+ENV LANG C.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL C.UTF-8
+ENV TZ Asia/Shanghai
+COPY  k-api-1.0.0.jar k-api.jar
+ENTRYPOINT ["nohup","java","-jar","-Dspring.profiles.active=test","k-api.jar","&"]
+EXPOSE 8080

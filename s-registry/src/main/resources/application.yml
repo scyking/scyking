@@ -1,19 +1,9 @@
-server:
-  port: 8761
-
 spring:
   application:
     name: s-registry
-  security:
-    user:
-      name: admin
-      password: 123456
 
-eureka:
-  instance:
-    hostname: 127.0.0.1
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  config:
+    activate:
+      on-profile: dev
+
+

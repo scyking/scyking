@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  eureka-server:
+    image: "s-registry"                     # 镜像名称
+    build:
+      context: .                            # 镜像所在目录，“.”表示dockerfile与compose文件在同一目录
+      dockerfile: "dockerfile-registry"     # dockerfile文件名
+    environment:
+      SERVER_PORT: 8761                                           # 自身服务端口号
+      SERVER_HOST: 127.0.0.1                                      # 自身服务地址，可域名。
+      EUREKA_SERVICE_URL: 127.0.0.1:8761/eureka/                  # 注册中心地址。集群地址以逗号隔开，且不包括本身地址。
+      REGISTER_WITH_EUREKA: "false"                               # 是否将本身服务注册。单机false，集群true PS:布尔值需加引号
+    ports:
+    - "8761:8761"
+
+  k-api:
+    image: "k-api"
+    build:
+      context: .
+      dockerfile: "dockerfile-kapi"
+    entrypoint:
+      SERVER_PORT: 8080
+      SERVER_HOST: 127.0.0.1
+      EUREKA_SERVICE_URL: 127.0.0.1:8761/eureka/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "eureka-server"
+
+  u-center:
+    image: "u-center"
+    build:
+      context: .
+      dockerfile: "dockerfile-ucenter"
+    entrypoint:
+      SERVER_PORT: 8081
+      SERVER_HOST: 127.0.0.1
+      EUREKA_SERVICE_URL: 127.0.0.1:8761/eureka/
+    ports:
+     - "8081:8081"
+    depends_on:
+      - "eureka-server"
