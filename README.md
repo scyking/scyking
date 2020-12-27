@@ -2,13 +2,15 @@
 
 ## 项目介绍
 
-基于 spring boot 2.X 开发，用于个人学习使用。
+基于 spring boot 2.X 开发，主要用于造轮子。
 
 ### 目录结构
 ```
 spring-boot-demo
 |-- common 公共模块
 |-- ucenter 用户系统
+|-- kapi 接口管理系统
+|-- s-registry 注册中心
 ```
 
 ## 涉及技术纲目
