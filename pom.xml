@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-    <!-- 基本信息 -->
-    <description>Demo project for Spring Boot</description>
     <modelVersion>4.0.0</modelVersion>
-    <name>scyking</name>
-    <packaging>pom</packaging>
 
     <!-- 项目说明 -->
     <groupId>com.scyking</groupId>
     <artifactId>scyking</artifactId>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>scyking</name>
+    <description>Demo project for Spring Boot</description>
 
     <!-- 继承说明：继承spring boot提供的父工程 -->
     <parent>
@@ -29,6 +28,18 @@
         <module>k-api</module>
     </modules>
 
+    <!-- 版本号 -->
+    <properties>
+        <com.scyking.version>1.0.0</com.scyking.version>
+        <com.scyking.common.version>1.0.0</com.scyking.common.version>
+        <com.scyking.kapi.version>1.0.0</com.scyking.kapi.version>
+        <com.scyking.ucenter.version>1.0.0</com.scyking.ucenter.version>
+        <com.scyking.sregistry.version>1.0.0</com.scyking.sregistry.version>
+
+        <java.version>1.8</java.version>
+        <spring-cloud.version>2020.0.0</spring-cloud.version>
+    </properties>
+
     <!-- 版本说明：统一管理依赖的版本号 -->
     <dependencyManagement>
         <dependencies>
@@ -36,24 +47,22 @@
             <dependency>
                 <groupId>com.scyking</groupId>
                 <artifactId>common</artifactId>
-                <version>1.0.0</version>
+                <version>${com.scyking.common.version}</version>
             </dependency>
-            <!-- 用户管理模块 -->
+
+            <!-- spring cloud -->
             <dependency>
-                <groupId>com.scyking</groupId>
-                <artifactId>u-center</artifactId>
-                <version>1.0.0</version>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-            <!-- 注册中心 -->
+            <!-- lombok -->
             <dependency>
-                <groupId>com.scyking</groupId>
-                <artifactId>s-registry</artifactId>
-                <version>1.0.0</version>
-            </dependency>
-            <dependency>
-                <groupId>com.scyking</groupId>
-                <artifactId>k-api</artifactId>
-                <version>1.0.0</version>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>
