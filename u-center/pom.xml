@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>ucenter</artifactId>
+    <artifactId>u-center</artifactId>
     <version>1.0.0</version>
     <name>u-center</name>
     <description>u-center</description>
