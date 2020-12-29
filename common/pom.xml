@@ -8,7 +8,6 @@
         <version>1.0.0</version>
     </parent>
 
-    <groupId>com.scyking</groupId>
     <artifactId>common</artifactId>
     <version>1.0.0</version>
     <name>common</name>
