@@ -7,6 +7,7 @@ services:
       context: .                            # 镜像所在目录，“.”表示dockerfile与compose文件在同一目录
       dockerfile: "dockerfile-registry"     # dockerfile文件名
     environment:
+      spring.profiles.active: test # 指定部署环境配置 pro是生产环境配置 test是测试环境配置
       SERVER_PORT: 8761                                           # 自身服务端口号
       SERVER_HOST: 127.0.0.1                                      # 自身服务地址，可域名。
       EUREKA_SERVICE_URL: 127.0.0.1:8761/eureka/                  # 注册中心地址。集群地址以逗号隔开，且不包括本身地址。
@@ -20,8 +21,11 @@ services:
       context: .
       dockerfile: "dockerfile-kapi"
     entrypoint:
+      spring.profiles.active: test
       SERVER_PORT: 8080
       SERVER_HOST: 127.0.0.1
+      MONGODB_HOST: 127.0.0.1
+      MONGODB_PORT: 27017
       EUREKA_SERVICE_URL: 127.0.0.1:8761/eureka/
     ports:
       - "8080:8080"
@@ -34,6 +38,7 @@ services:
       context: .
       dockerfile: "dockerfile-ucenter"
     entrypoint:
+      spring.profiles.active: test
       SERVER_PORT: 8081
       SERVER_HOST: 127.0.0.1
       EUREKA_SERVICE_URL: 127.0.0.1:8761/eureka/

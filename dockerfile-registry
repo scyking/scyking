@@ -6,5 +6,5 @@ ENV LANGUAGE zh_CN.UTF-8
 ENV LC_ALL C.UTF-8
 ENV TZ Asia/Shanghai
 COPY  s-registry-1.0.0.jar s-registry.jar
-ENTRYPOINT ["nohup","java","-jar","-Dspring.profiles.active=test","s-registry.jar","&"]
+ENTRYPOINT ["nohup","java","-jar","s-registry.jar","&"]
 EXPOSE 8761
