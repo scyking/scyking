@@ -1,9 +1,7 @@
 spring:
   application:
     name: s-registry
-
-  config:
-    activate:
-      on-profile: dev
+  profiles:
+    active: dev
 
 

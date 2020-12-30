@@ -1,7 +1,5 @@
 spring:
   application:
     name: u-center
-
-  config:
-    activate:
-      on-profile: dev
+  profiles:
+    active: dev
