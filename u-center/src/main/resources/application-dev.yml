@@ -14,6 +14,11 @@ spring:
   config:
     activate:
       on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/u_center
+    username: root
+    password: Root_12root
 
 eureka:
   instance:

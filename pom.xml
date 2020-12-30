@@ -44,6 +44,7 @@
         <com.scyking.sregistry.version>1.0.0</com.scyking.sregistry.version>
 
         <swagger.version>3.0.0</swagger.version>
+        <mybatis-plus.version>3.4.1</mybatis-plus.version>
     </properties>
 
     <dependencies>
@@ -83,6 +84,12 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${swagger.version}</version>
+            </dependency>
+            <!-- mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
