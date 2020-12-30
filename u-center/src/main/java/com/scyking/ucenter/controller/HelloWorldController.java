@@ -11,7 +11,7 @@ import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-@Tag(name = "测试接口")
+@Tag(name = "测试接口", description = "测试")
 @RestController
 @RequestMapping("test")
 public class HelloWorldController {
