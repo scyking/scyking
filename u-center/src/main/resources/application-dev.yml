@@ -16,9 +16,15 @@ spring:
       on-profile: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/u_center
+    url: jdbc:mysql://localhost:3306/u_center?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: Root_12root
+    # 初始化数据库脚本（初始化结束后可删除该配置）
+    initialization-mode: always
+    sql-script-encoding: utf-8
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql # 重复启动，会导致主键冲突，从而报错
+    continue-on-error: false # false ：sql脚本出错终止服务；true ：继续服务
 
 eureka:
   instance:
