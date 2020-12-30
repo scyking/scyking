@@ -1,5 +1,7 @@
 package com.scyking.ucenter.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,15 +11,18 @@ import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@Tag(name = "测试接口")
 @RestController
 @RequestMapping("test")
 public class HelloWorldController {
 
+    @Operation(summary = "hello world")
     @RequestMapping(value = "/hello-world", method = RequestMethod.GET)
-    public String helloWorld(String name) {
-        return "hello world : " + name;
+    public String helloWorld() {
+        return "hello world !";
     }
 
+    @Operation(summary = "下载测试")
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public void download(HttpServletResponse response) {
         String content = "测试";

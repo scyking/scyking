@@ -1,6 +1,11 @@
 server:
   port: 8081
 
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
+
 spring:
   security:
     user:
