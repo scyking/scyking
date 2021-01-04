@@ -45,6 +45,8 @@
 
         <swagger.version>3.0.0</swagger.version>
         <mybatis-plus.version>3.4.1</mybatis-plus.version>
+        <mybatis-plus.generator>3.4.1</mybatis-plus.generator>
+        <org.freemarker.version>2.3.30</org.freemarker.version>
     </properties>
 
     <dependencies>
@@ -90,6 +92,16 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus.generator}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${org.freemarker.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
