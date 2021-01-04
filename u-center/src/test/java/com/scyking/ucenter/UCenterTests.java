@@ -20,6 +20,19 @@ import java.util.List;
 public class UCenterTests {
 
     @Test
+    public void integerTest() {
+        Integer a = 500;
+        Integer b = 500;
+        final Integer c = 500;
+        Integer d = 100;
+        Integer e = 100;
+        // Integer.valueOf() [-128, 127]:true
+        System.out.println(a == b);
+        System.out.println(a == c);
+        System.out.println(d == e);
+    }
+
+    @Test
     public void codeGenerator() {
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setOutputDir(System.getProperty("user.dir") + "/src/main/java");
