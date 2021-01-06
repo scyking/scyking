@@ -47,6 +47,7 @@
         <mybatis-plus.version>3.4.1</mybatis-plus.version>
         <mybatis-plus.generator>3.4.1</mybatis-plus.generator>
         <org.freemarker.version>2.3.30</org.freemarker.version>
+        <io.jsonwebtoken.version>0.9.1</io.jsonwebtoken.version>
     </properties>
 
     <dependencies>
@@ -102,6 +103,11 @@
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>
                 <version>${org.freemarker.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${io.jsonwebtoken.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

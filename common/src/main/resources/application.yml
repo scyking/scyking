@@ -1,0 +1,3 @@
+scyking:
+  jwt:
+    expire: 43200 # token有效时长，12h
