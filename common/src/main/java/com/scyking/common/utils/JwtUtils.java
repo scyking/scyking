@@ -1,5 +1,6 @@
 package com.scyking.common.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -85,16 +86,14 @@ public class JwtUtils {
      * @param jwt
      * @return
      */
-    public Map<String, Object> getJwtPayload(String jwt) {
+    public Map getJwtPayload(String jwt) throws JsonProcessingException {
         Assert.notNull(jwt, "待解析jwt不能为空！");
         String[] jwtStr = jwt.split("\\.");
         if (jwtStr.length < 3) {
             throw new UnsupportedJwtException("待解析jwt格式错误！");
         }
-        // 解析payload部分
-        String jsonStr = Base64Utils.decode(jwtStr[1]);
-        System.out.println(jsonStr);
-        return null;
+        // 解析payload部分，并返回结果
+        return JsonUtils.json2Map(Base64Utils.decode(jwtStr[1]));
     }
 
 }
