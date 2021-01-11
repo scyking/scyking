@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: s-gateway
+  profiles:
+    active: dev
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true # 允许携带认证信息
+            allowed-origins: "*" # 允许跨域的源(网站域名/ip)，设置*为全部
+            allowed-headers: "*" # 允许跨域请求里的head字段，设置*为全部
+            allowed-methods: "*" # 允许跨域的method， 默认为GET和OPTIONS，设置*为全部
+            max-age: 3600 # 跨域允许的有效期 （单位：秒）
+            # 允许response的head信息
+            # 默认仅允许如下6个：Cache-Control Content-Language Content-Type Expires Last-Modified Pragma
+            exposed-headers: "Content-Disposition"

@@ -22,6 +22,7 @@
 
     <!-- 模块说明 -->
     <modules>
+        <module>s-gateway</module>
         <module>s-registry</module>
         <module>u-center</module>
         <module>common</module>
