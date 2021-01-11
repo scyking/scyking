@@ -1,0 +1,22 @@
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+  config:
+    activate:
+      on-profile: test
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    ip-address: ${SERVER_HOST}
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+    hostname: ${eureka.instance.ip-address}
+
+  client:
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${EUREKA_SERVICE_URL}
