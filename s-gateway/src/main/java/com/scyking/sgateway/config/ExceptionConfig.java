@@ -15,8 +15,12 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * 自定义异常配置类
+ *
+ * <p>网关统一异常配置，和其他服务不同。
+ * 不能直接使用{@code @ControllerAdvice}注解</p>
+ *
  * @author scyking
- * @description
  **/
 @Configuration
 public class ExceptionConfig {

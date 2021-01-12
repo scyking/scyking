@@ -23,8 +23,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * 实现{@link ErrorWebExceptionHandler}接口，重写{@code handle}方法，进行网关统一异常处理
+ *
  * @author scyking
- * @description 网关统一异常处理
+ * @see org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler
  **/
 @Slf4j
 public class JsonExceptionHandler implements ErrorWebExceptionHandler {
