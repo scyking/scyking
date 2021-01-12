@@ -89,10 +89,10 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
             msg = ex.getMessage();
         }
 
-
         // 错误记录
         ServerHttpRequest request = exchange.getRequest();
         log.error("[全局异常处理]异常请求路径:{},记录异常信息:{}", request.getPath(), ex.getMessage());
+        ex.printStackTrace();
         if (exchange.getResponse().isCommitted()) {
             return Mono.error(ex);
         }
