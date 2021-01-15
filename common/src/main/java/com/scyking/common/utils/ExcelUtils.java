@@ -17,6 +17,9 @@ import org.springframework.util.Assert;
 @Data
 public class ExcelUtils {
 
+    private static final String EXCEL_2003 = ".xls";
+    private static final String EXCEL_2007 = ".xlsx";
+
     private Workbook wb;
     private Sheet sheet;
 
@@ -46,16 +49,13 @@ public class ExcelUtils {
 
     public ExcelUtils workbook(String fileName) {
         Assert.notNull(fileName, "文件名称不能为空！");
-        String[] temp = fileName.split("\\.");
-        if (temp.length > 1) {
-            if ("xlsx".equals(temp[1])) {
-                wb = new XSSFWorkbook();
-                return this;
-            }
-            if ("xls".equals(temp[1])) {
-                wb = new HSSFWorkbook();
-                return this;
-            }
+        if(fileName.endsWith(EXCEL_2003)){
+            wb = new HSSFWorkbook();
+            return this;
+        }
+        if(fileName.endsWith(EXCEL_2007)){
+            wb = new XSSFWorkbook();
+            return this;
         }
         throw new IllegalArgumentException("请正确输入文件名称！");
     }
