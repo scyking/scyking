@@ -7,11 +7,8 @@
         <artifactId>scyking</artifactId>
         <version>1.0.0</version>
     </parent>
-
     <artifactId>common</artifactId>
-    <version>1.0.0</version>
-    <name>common</name>
-    <description>common</description>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -32,14 +29,5 @@
             <artifactId>poi-ooxml</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

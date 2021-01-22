@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>s-gateway</artifactId>
-    <version>1.0.0</version>
     <name>s-gateway</name>
     <description>服务网关</description>
 
