@@ -1,4 +1,4 @@
-package com.scyking.sgateway.exception;
+package com.scyking.sgateway.filter;
 
 import com.scyking.common.responses.BaseResponse;
 import com.scyking.sgateway.client.UserAuthClient;
