@@ -8,11 +8,27 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allow-credentials: true # ÔÊĞíĞ¯´øÈÏÖ¤ĞÅÏ¢
-            allowed-origins: "*" # ÔÊĞí¿çÓòµÄÔ´(ÍøÕ¾ÓòÃû/ip)£¬ÉèÖÃ*ÎªÈ«²¿
-            allowed-headers: "*" # ÔÊĞí¿çÓòÇëÇóÀïµÄhead×Ö¶Î£¬ÉèÖÃ*ÎªÈ«²¿
-            allowed-methods: "*" # ÔÊĞí¿çÓòµÄmethod£¬ Ä¬ÈÏÎªGETºÍOPTIONS£¬ÉèÖÃ*ÎªÈ«²¿
-            max-age: 3600 # ¿çÓòÔÊĞíµÄÓĞĞ§ÆÚ £¨µ¥Î»£ºÃë£©
-            # ÔÊĞíresponseµÄheadĞÅÏ¢
-            # Ä¬ÈÏ½öÔÊĞíÈçÏÂ6¸ö£ºCache-Control Content-Language Content-Type Expires Last-Modified Pragma
+            # å…è®¸æºå¸¦è®¤è¯ä¿¡æ¯
+            # å…è®¸è·¨åŸŸçš„æº(ç½‘ç«™åŸŸå/ip)ï¼Œè®¾ç½®*ä¸ºå…¨éƒ¨
+            # å…è®¸è·¨åŸŸè¯·æ±‚é‡Œçš„headå­—æ®µï¼Œè®¾ç½®*ä¸ºå…¨éƒ¨
+            # å…è®¸è·¨åŸŸçš„methodï¼Œ é»˜è®¤ä¸ºGETå’ŒOPTIONSï¼Œè®¾ç½®*ä¸ºå…¨éƒ¨
+            # è·¨åŸŸå…è®¸çš„æœ‰æ•ˆæœŸ ï¼ˆå•ä½ï¼šç§’ï¼‰
+            allow-credentials: true
+            allowed-origins: "*"
+            allowed-headers: "*"
+            allowed-methods:
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "PATCH"
+            max-age: 3600
+            # å…è®¸responseçš„headä¿¡æ¯
+            # é»˜è®¤ä»…å…è®¸å¦‚ä¸‹6ä¸ªï¼š
+            #     Cache-Control
+            #     Content-Language
+            #     Content-Type
+            #     Expires
+            #     Last-Modified
+            #     Pragma
             exposed-headers: "Content-Disposition"
