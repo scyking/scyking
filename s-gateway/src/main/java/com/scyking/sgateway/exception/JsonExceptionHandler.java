@@ -1,8 +1,10 @@
 package com.scyking.sgateway.exception;
 
 import com.scyking.common.responses.BaseResponse;
+import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
+import org.springframework.cloud.gateway.support.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.HttpMessageReader;
@@ -79,31 +81,38 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
 
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
-        // 统一异常拦截
-        int code = HttpStatus.INTERNAL_SERVER_ERROR.value();
-        String msg = "网关内部错误！";
-        if (ex instanceof ResponseStatusException) {
-            ResponseStatusException responseStatusException = (ResponseStatusException) ex;
-            code = responseStatusException.getStatus().value();
-            msg = responseStatusException.getMessage();
-        }
-        if (ex instanceof IllegalArgumentException) {
-            msg = ex.getMessage();
-        }
-
-        // 错误记录
-        ServerHttpRequest request = exchange.getRequest();
-        log.error("[全局异常处理]异常请求路径:{},记录异常信息:{}", request.getPath(), ex.getMessage());
-        ex.printStackTrace();
+        handleException(ex);
         if (exchange.getResponse().isCommitted()) {
             return Mono.error(ex);
         }
-        exceptionHandlerResult.set(BaseResponse.error().code(code).msg(msg));
         ServerRequest newRequest = ServerRequest.create(exchange, this.messageReaders);
         return RouterFunctions.route(RequestPredicates.all(), this::renderErrorResponse).route(newRequest)
                 .switchIfEmpty(Mono.error(ex))
                 .flatMap((handler) -> handler.handle(newRequest))
                 .flatMap((response) -> write(exchange, response));
+    }
+
+    private void handleException(Throwable ex) {
+        // 打印错误堆栈信息 方便调试
+        ex.printStackTrace();
+        BaseResponse response = BaseResponse.error();
+        if (ex instanceof ResponseStatusException) {
+            ResponseStatusException responseStatusException = (ResponseStatusException) ex;
+            response.setCode(responseStatusException.getStatus().value());
+            response.setMsg("响应异常，请联系管理员！");
+        }
+        if (ex instanceof FeignException) {
+            response.setCode(HttpStatus.UNAUTHORIZED.value());
+            response.setMsg("token失效，请重新登录！");
+        }
+        if (ex instanceof IllegalArgumentException) {
+            response.setMsg("传参错误，请检查参数！");
+        }
+        if (ex instanceof NotFoundException) {
+            response.setCode(HttpStatus.SERVICE_UNAVAILABLE.value());
+            response.setMsg("未查询到接口信息，请联系管理员！");
+        }
+        exceptionHandlerResult.set(response);
     }
 
     private Mono<ServerResponse> renderErrorResponse(ServerRequest request) {
