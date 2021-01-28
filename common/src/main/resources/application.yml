@@ -1,3 +1,0 @@
-scyking:
-  jwt:
-    expire: 43200 # token

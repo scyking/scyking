@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
+ * Json web token (JWT)
  * <p>
  * JWT构成：
  * 1. header：
@@ -38,15 +39,10 @@ import java.util.Map;
  * </p>
  *
  * @author scyking
- * @description Json web token (JWT)
  **/
-@Data
-@Slf4j
-@Component
 public class JwtUtils {
 
-    @Value("${scyking.jwt.expire}")
-    private long expire;
+    private static final long expire = 43200;
 
     /**
      * 签发jwt:
