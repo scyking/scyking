@@ -22,10 +22,11 @@
 
     <!-- 模块说明 -->
     <modules>
+        <module>common</module>
         <module>s-gateway</module>
         <module>s-registry</module>
+        <module>s-log</module>
         <module>u-center</module>
-        <module>common</module>
         <module>k-api</module>
     </modules>
 
