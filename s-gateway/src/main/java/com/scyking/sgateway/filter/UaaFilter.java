@@ -1,6 +1,6 @@
 package com.scyking.sgateway.filter;
 
-import com.scyking.common.responses.BaseResponse;
+import com.scyking.common.base.BaseResponse;
 import com.scyking.sgateway.client.UserAuthClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;

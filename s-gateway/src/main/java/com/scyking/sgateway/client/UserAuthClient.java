@@ -1,6 +1,6 @@
 package com.scyking.sgateway.client;
 
-import com.scyking.common.responses.BaseResponse;
+import com.scyking.common.base.BaseResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;

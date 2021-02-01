@@ -1,4 +1,4 @@
-package com.scyking.common.responses;
+package com.scyking.common.base;
 
 import lombok.Data;
 

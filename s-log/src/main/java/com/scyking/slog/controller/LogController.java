@@ -1,6 +1,6 @@
 package com.scyking.slog.controller;
 
-import com.scyking.common.responses.BaseResponse;
+import com.scyking.common.base.BaseResponse;
 import com.scyking.slog.pojo.SysLog;
 import com.scyking.slog.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;

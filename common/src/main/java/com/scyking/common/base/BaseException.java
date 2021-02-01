@@ -1,4 +1,4 @@
-package com.scyking.common.exception;
+package com.scyking.common.base;
 
 import lombok.Data;
 

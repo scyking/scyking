@@ -1,6 +1,6 @@
 package com.scyking.sgateway.exception;
 
-import com.scyking.common.responses.BaseResponse;
+import com.scyking.common.base.BaseResponse;
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;

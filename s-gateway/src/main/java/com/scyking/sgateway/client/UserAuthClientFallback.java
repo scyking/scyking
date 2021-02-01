@@ -1,6 +1,6 @@
 package com.scyking.sgateway.client;
 
-import com.scyking.common.responses.BaseResponse;
+import com.scyking.common.base.BaseResponse;
 
 /**
  * 描述：
