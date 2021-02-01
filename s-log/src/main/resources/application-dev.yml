@@ -14,6 +14,11 @@ spring:
       host: 127.0.0.1
       port: 27017
       database: slog-db
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    password: guest
+    username: guest
 
 eureka:
   instance:
