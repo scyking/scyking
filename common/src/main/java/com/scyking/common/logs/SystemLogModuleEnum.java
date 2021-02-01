@@ -1,4 +1,4 @@
-package com.scyking.slog.pojo;
+package com.scyking.common.logs;
 
 /**
  * @author scyking

@@ -1,6 +1,8 @@
 package com.scyking.slog.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.scyking.common.logs.SystemLogModuleEnum;
+import com.scyking.common.logs.SystemLogTypeEnum;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

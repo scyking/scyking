@@ -44,12 +44,4 @@ public class BaseResponse<T> {
         this.code = code;
         return this;
     }
-
-    public boolean isOk() {
-        return this.code == SUCCESS;
-    }
-
-    public boolean isError() {
-        return !isOk();
-    }
 }

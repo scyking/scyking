@@ -1,4 +1,4 @@
-package com.scyking.slog.pojo;
+package com.scyking.common.logs;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
