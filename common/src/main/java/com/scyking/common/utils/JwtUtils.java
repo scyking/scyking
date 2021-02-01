@@ -42,7 +42,8 @@ import java.util.Map;
  **/
 public class JwtUtils {
 
-    private static final long expire = 43200;
+    @Value("${scyking.jwt.expire:43200}")
+    private long expire;
 
     /**
      * 签发jwt:
