@@ -17,7 +17,7 @@ import java.security.SecureRandom;
  * @createTime 2020/12/29 17:08
  **/
 @Slf4j
-public class KeyGeneratorUtils {
+public class SecretKeyUtils {
 
     private static final char[] hexCode = "0123456789abcdef".toCharArray();
 
