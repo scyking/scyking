@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: s-log
+  profiles:
+    active: dev
+
+
