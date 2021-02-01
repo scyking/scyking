@@ -1,7 +1,8 @@
 package com.scyking.slog.config;
 
 import com.scyking.common.utils.Constant;
-import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
