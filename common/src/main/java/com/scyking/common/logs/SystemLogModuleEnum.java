@@ -18,5 +18,10 @@ public enum SystemLogModuleEnum {
     /**
      * 用户实名审核
      */
-    USER_CENTER_USER_REALNAME
+    USER_CENTER_USER_REALNAME,
+
+    /**
+     * 其他
+     */
+    OTHER
 }

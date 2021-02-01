@@ -6,6 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * 日志切面注解
+ *
  * @author scyking
  **/
 @Target(ElementType.METHOD)
@@ -14,7 +16,7 @@ public @interface SystemLog {
 
     SystemLogTypeEnum type() default SystemLogTypeEnum.OTHER;
 
-    SystemLogModuleEnum module();
+    SystemLogModuleEnum module() default SystemLogModuleEnum.OTHER;
 
 }
 
