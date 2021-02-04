@@ -20,3 +20,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8761/eureka/
+
+scyking:
+  uaa:
+    enable: false # 是否开启网关鉴权 开发中关闭，方便调试程序

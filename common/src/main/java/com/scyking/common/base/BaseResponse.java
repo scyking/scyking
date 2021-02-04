@@ -3,9 +3,10 @@ package com.scyking.common.base;
 import lombok.Data;
 
 /**
+ * http 响应结果
+ * <p>链式返回结果</p>
+ *
  * @author scyking
- * @description 链式返回结果
- * @createTime 2020/12/29 16:50
  **/
 @Data
 public class BaseResponse<T> {

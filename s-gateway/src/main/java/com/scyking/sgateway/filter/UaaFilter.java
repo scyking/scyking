@@ -1,8 +1,10 @@
 package com.scyking.sgateway.filter;
 
 import com.scyking.common.base.BaseResponse;
+import com.scyking.common.utils.ResponseUtils;
 import com.scyking.sgateway.client.UserAuthClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -19,17 +21,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 网关统一鉴权
+ *
  * @author scyking
- * @description
  **/
 @Component
 public class UaaFilter implements GlobalFilter {
+
+    @Value("${scyking.uaa.enable:false}")
+    boolean enable;
 
     @Autowired
     UserAuthClient userAuthClient;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        if (!enable) {
+            return chain.filter(exchange);
+        }
         String requestUrl = exchange.getRequest().getURI().getRawPath();
         // 在忽略的 url 里，则跳过
         if (ignore(requestUrl)) {
@@ -42,7 +51,7 @@ public class UaaFilter implements GlobalFilter {
         }
         BaseResponse resp = userAuthClient.checkUserToken(headerToken);
         // 鉴权失败！
-        if (resp == null || resp.isError()) {
+        if (!ResponseUtils.hasData(resp)) {
             return noPower(exchange);
         }
         // 封装转发信息
