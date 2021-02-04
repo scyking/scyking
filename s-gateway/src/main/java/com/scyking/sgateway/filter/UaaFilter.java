@@ -1,6 +1,8 @@
 package com.scyking.sgateway.filter;
 
+import cn.hutool.json.JSONUtil;
 import com.scyking.common.base.BaseResponse;
+import com.scyking.common.utils.Constants;
 import com.scyking.common.utils.ResponseUtils;
 import com.scyking.sgateway.client.UserAuthClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,10 +46,10 @@ public class UaaFilter implements GlobalFilter {
         if (ignore(requestUrl)) {
             return chain.filter(exchange);
         }
-        String headerToken = exchange.getRequest().getHeaders().getFirst("Authorization");
+        String headerToken = exchange.getRequest().getHeaders().getFirst(Constants.HEADER_TOKEN);
         // 未获取到token信息，失败
         if (!StringUtils.hasText(headerToken)) {
-            return noPower(exchange, "认证失败，未获取到token信息！");
+            return noPower(exchange);
         }
         BaseResponse resp = userAuthClient.checkUserToken(headerToken);
         // 鉴权失败！
@@ -57,7 +59,7 @@ public class UaaFilter implements GlobalFilter {
         // 封装转发信息
         //todo something
         ServerHttpRequest request = exchange.getRequest().mutate()
-                .header("Authenticator", headerToken)
+                .header(Constants.HEADER_USER_ID, "test")
                 .build();
         return chain.filter(exchange.mutate().request(request).build());
     }
@@ -73,13 +75,14 @@ public class UaaFilter implements GlobalFilter {
     }
 
     private Mono<Void> noPower(ServerWebExchange serverWebExchange) {
-        return noPower(serverWebExchange, "鉴权失败！");
+        return noPower(serverWebExchange, "token失效，请重新登录！");
     }
 
     private Mono<Void> noPower(ServerWebExchange serverWebExchange, String message) {
-        serverWebExchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-        String result = "{\"code\":" + HttpStatus.UNAUTHORIZED.value() + ",\"msg\": \"" + message + "\"}";
-        DataBuffer buffer = serverWebExchange.getResponse().bufferFactory().wrap(result.getBytes(StandardCharsets.UTF_8));
+        // 响应结果数据
+        BaseResponse result = BaseResponse.error().code(HttpStatus.UNAUTHORIZED.value()).msg(message);
+        DataBuffer buffer = serverWebExchange.getResponse().bufferFactory().wrap(JSONUtil.parse(result).toStringPretty().getBytes(StandardCharsets.UTF_8));
+        // 响应
         ServerHttpResponse response = serverWebExchange.getResponse();
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
         //指定编码，否则在浏览器中会中文乱码
