@@ -1,6 +1,6 @@
 package com.scyking.slog;
 
-import com.scyking.common.utils.Constant;
+import com.scyking.common.utils.Constants;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,8 @@ class SLogApplicationTests {
 
     @Test
     void msgProducer() {
-        rabbitTemplate.convertAndSend(Constant.LOG_DIRECT_EXCHANGE,
-                Constant.LOG_DIRECT_ROUTING_KEY, "hello world!");
+        rabbitTemplate.convertAndSend(Constants.LOG_DIRECT_EXCHANGE,
+                Constants.LOG_DIRECT_ROUTING_KEY, "hello world!");
     }
 
 }

@@ -1,6 +1,6 @@
 package com.scyking.slog.mq;
 
-import com.scyking.common.utils.Constant;
+import com.scyking.common.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.*;
@@ -17,8 +17,8 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class MsgConsumer {
 
-    @RabbitListener(bindings = {@QueueBinding(value = @Queue(value = Constant.LOG_DIRECT_QUEUE, durable = "true"),
-            exchange = @Exchange(value = Constant.LOG_DIRECT_EXCHANGE), key = Constant.LOG_DIRECT_ROUTING_KEY)})
+    @RabbitListener(bindings = {@QueueBinding(value = @Queue(value = Constants.LOG_DIRECT_QUEUE, durable = "true"),
+            exchange = @Exchange(value = Constants.LOG_DIRECT_EXCHANGE), key = Constants.LOG_DIRECT_ROUTING_KEY)})
     @RabbitHandler
     public void processMsg(Message massage) {
         String msg = new String(massage.getBody(), StandardCharsets.UTF_8);
