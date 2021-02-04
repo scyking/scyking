@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.scyking.ucenter.controller.BaseController;
+import com.scyking.common.base.BaseController;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

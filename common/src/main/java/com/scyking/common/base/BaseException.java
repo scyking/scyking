@@ -1,30 +1,27 @@
 package com.scyking.common.base;
 
-import lombok.Data;
-
 /**
+ * 自定义运行时异常
+ *
  * @author scyking
- * @description
  **/
-@Data
 public class BaseException extends RuntimeException {
-    private String msg;
-    private int code = 500;
+
+    private static final long serialVersionUID = 6045833912066796358L;
+
+    public BaseException() {
+        super();
+    }
 
     public BaseException(String msg) {
         super(msg);
-        this.msg = msg;
     }
 
-    public BaseException(String msg, int code) {
-        super(msg);
-        this.msg = msg;
-        this.code = code;
+    public BaseException(Throwable cause) {
+        super(cause);
     }
 
-    public BaseException(String msg, int code, Throwable e) {
-        super(msg, e);
-        this.msg = msg;
-        this.code = code;
+    public BaseException(String msg, Throwable cause) {
+        super(msg, cause);
     }
 }

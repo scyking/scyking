@@ -1,8 +1,9 @@
-package com.scyking.ucenter.controller;
+package com.scyking.common.base;
 
 /**
+ * 控制器基类
+ *
  * @author scyking
- * @description
  **/
 public class BaseController {
 }
