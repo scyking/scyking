@@ -9,7 +9,7 @@ import org.springframework.beans.BeanUtils;
  *
  * @author scyking
  **/
-public class pojoAdapter {
+public class PojoAdapter {
 
     public static SysLog comLogEntity2SysLog(ComLogEntity comLogEntity) {
         SysLog sysLog = new SysLog();
