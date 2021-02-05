@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -24,4 +25,10 @@ public class LogController {
     BaseResponse<List<SysLog>> listSysLogs() {
         return BaseResponse.success().data(logService.listLogs());
     }
+
+    @GetMapping("/download")
+    void download(HttpServletResponse response) {
+        logService.download(response);
+    }
+
 }
