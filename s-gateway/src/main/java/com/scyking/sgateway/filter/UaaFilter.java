@@ -1,7 +1,7 @@
 package com.scyking.sgateway.filter;
 
 import cn.hutool.json.JSONUtil;
-import com.scyking.common.base.BaseResponse;
+import com.scyking.common.base.HttpResult;
 import com.scyking.common.utils.Constants;
 import com.scyking.common.utils.ResponseUtils;
 import com.scyking.sgateway.client.UserAuthClient;
@@ -55,7 +55,7 @@ public class UaaFilter implements GlobalFilter {
         if (!StringUtils.hasText(headerToken)) {
             return noPower(exchange);
         }
-        BaseResponse resp = userAuthClient.checkUserToken(headerToken);
+        HttpResult resp = userAuthClient.checkUserToken(headerToken);
         // 鉴权失败！
         if (!ResponseUtils.hasData(resp)) {
             return noPower(exchange);
@@ -84,7 +84,7 @@ public class UaaFilter implements GlobalFilter {
 
     private Mono<Void> noPower(ServerWebExchange serverWebExchange, String message) {
         // 响应结果数据
-        BaseResponse result = BaseResponse.error().code(HttpStatus.UNAUTHORIZED.value()).msg(message);
+        HttpResult result = HttpResult.error().code(HttpStatus.UNAUTHORIZED.value()).msg(message);
         DataBuffer buffer = serverWebExchange.getResponse().bufferFactory().wrap(JSONUtil.parse(result).toStringPretty().getBytes(StandardCharsets.UTF_8));
         // 响应
         ServerHttpResponse response = serverWebExchange.getResponse();

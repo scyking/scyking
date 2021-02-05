@@ -1,6 +1,6 @@
 package com.scyking.common.utils;
 
-import com.scyking.common.base.BaseResponse;
+import com.scyking.common.base.HttpResult;
 
 /**
  * @author scyking
@@ -13,15 +13,15 @@ public class ResponseUtils {
      * @param response 响应结果
      * @return
      */
-    public static boolean hasData(BaseResponse response) {
+    public static boolean hasData(HttpResult response) {
         return isSuccess(response) && response.getData() != null;
     }
 
-    public static boolean isSuccess(BaseResponse response) {
+    public static boolean isSuccess(HttpResult response) {
         return !isFailure(response);
     }
 
-    public static boolean isFailure(BaseResponse response) {
-        return response == null || response.getCode() != BaseResponse.SUCCESS;
+    public static boolean isFailure(HttpResult response) {
+        return response == null || response.getCode() != HttpResult.SUCCESS;
     }
 }

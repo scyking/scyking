@@ -33,6 +33,24 @@ public class Excels {
     private String fileName = EXCEL_DEFAULT_NAME;
     private Map<Integer, String[]> rows = new HashMap<>();
 
+    public Excels() {
+    }
+
+    public Excels(Workbook wb, String fileName) {
+        this.wb = wb;
+        this.fileName = fileName;
+    }
+
+
+    public Workbook getWb() {
+        return this.wb;
+    }
+
+    public String getFileName() {
+        return this.fileName;
+    }
+
+
     public Workbook build() {
         createWorkbook();
         createSheet();

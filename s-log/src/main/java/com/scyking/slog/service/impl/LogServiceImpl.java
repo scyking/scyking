@@ -2,13 +2,13 @@ package com.scyking.slog.service.impl;
 
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.json.JSONUtil;
 import com.scyking.common.utils.ExcelUtils;
 import com.scyking.common.utils.Excels;
 import com.scyking.common.utils.JsonUtils;
 import com.scyking.slog.pojo.SysLog;
+import com.scyking.slog.pojo.SysLogPageVO;
 import com.scyking.slog.service.LogService;
-import org.apache.poi.ss.usermodel.Workbook;
+import com.scyking.slog.util.QueryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -22,6 +22,9 @@ import java.util.List;
  **/
 @Service
 public class LogServiceImpl implements LogService {
+
+    @Autowired
+    QueryUtils queryUtils;
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -42,8 +45,23 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public void download(HttpServletResponse response) {
-        List<SysLog> logs = listLogs();
+    public List<SysLog> listLogs(SysLogPageVO vo) {
+        return mongoTemplate.find(queryUtils.buildPage(vo), SysLog.class);
+    }
+
+    @Override
+    public List<SysLog> listAllLogs(SysLogPageVO vo) {
+        return mongoTemplate.find(queryUtils.build(vo), SysLog.class);
+    }
+
+    @Override
+    public long countLogs(SysLogPageVO vo) {
+        return mongoTemplate.count(queryUtils.build(vo), SysLog.class);
+    }
+
+    @Override
+    public void download(HttpServletResponse response, SysLogPageVO sysLogVO) {
+        List<SysLog> logs = listAllLogs(sysLogVO);
         String fileName = "操作日志.xlsx";
         Excels excels = new Excels()
                 .workbook(fileName)

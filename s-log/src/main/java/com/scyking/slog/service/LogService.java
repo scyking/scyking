@@ -1,6 +1,7 @@
 package com.scyking.slog.service;
 
 import com.scyking.slog.pojo.SysLog;
+import com.scyking.slog.pojo.SysLogPageVO;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -16,5 +17,11 @@ public interface LogService {
 
     List<SysLog> listLogs();
 
-    void download(HttpServletResponse response);
+    List<SysLog> listLogs(SysLogPageVO vo);
+
+    List<SysLog> listAllLogs(SysLogPageVO vo);
+
+    long countLogs(SysLogPageVO vo);
+
+    void download(HttpServletResponse response, SysLogPageVO sysLogVO);
 }

@@ -1,6 +1,6 @@
 package com.scyking.sgateway.exception;
 
-import com.scyking.common.base.BaseResponse;
+import com.scyking.common.base.HttpResult;
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
@@ -36,7 +36,7 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
     private List<HttpMessageWriter<?>> messageWriters = Collections.emptyList();
     private List<ViewResolver> viewResolvers = Collections.emptyList();
     // 存储处理异常后的信息
-    private ThreadLocal<BaseResponse> exceptionHandlerResult = new ThreadLocal<>();
+    private ThreadLocal<HttpResult> exceptionHandlerResult = new ThreadLocal<>();
 
     //*******************************************************************************/
     //*****************   参考AbstractErrorWebExceptionHandler   ********************/
@@ -94,7 +94,7 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
     private void handleException(Throwable ex) {
         // 打印错误堆栈信息 方便调试
         ex.printStackTrace();
-        BaseResponse response = BaseResponse.error();
+        HttpResult response = HttpResult.error();
         if (ex instanceof ResponseStatusException) {
             ResponseStatusException responseStatusException = (ResponseStatusException) ex;
             response.setCode(responseStatusException.getStatus().value());
@@ -115,7 +115,7 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
     }
 
     private Mono<ServerResponse> renderErrorResponse(ServerRequest request) {
-        BaseResponse result = exceptionHandlerResult.get();
+        HttpResult result = exceptionHandlerResult.get();
         return ServerResponse.status(HttpStatus.valueOf(result.getCode()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(result));

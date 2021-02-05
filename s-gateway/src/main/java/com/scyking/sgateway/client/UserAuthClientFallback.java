@@ -1,6 +1,6 @@
 package com.scyking.sgateway.client;
 
-import com.scyking.common.base.BaseResponse;
+import com.scyking.common.base.HttpResult;
 
 /**
  * 描述：
@@ -13,7 +13,7 @@ import com.scyking.common.base.BaseResponse;
 public class UserAuthClientFallback implements UserAuthClient {
 
     @Override
-    public BaseResponse<?> checkUserToken(String auth) {
+    public HttpResult<?> checkUserToken(String auth) {
         return null;
     }
 }
