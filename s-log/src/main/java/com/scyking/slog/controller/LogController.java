@@ -5,7 +5,6 @@ import com.scyking.common.base.HttpResult;
 import com.scyking.slog.pojo.SysLog;
 import com.scyking.slog.pojo.SysLogPageVO;
 import com.scyking.slog.service.LogService;
-import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
