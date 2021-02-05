@@ -5,6 +5,9 @@ import com.scyking.common.base.HttpResult;
 import com.scyking.slog.pojo.SysLog;
 import com.scyking.slog.pojo.SysLogPageVO;
 import com.scyking.slog.service.LogService;
+import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,7 @@ import java.util.List;
 /**
  * @author scyking
  **/
+@Tag(name = "日志")
 @RestController
 @RequestMapping("/logs")
 public class LogController {
@@ -24,6 +28,7 @@ public class LogController {
     LogService logService;
 
     @GetMapping
+    @Operation(summary = "日志列表")
     HttpResult<?> listSysLogs(SysLogPageVO sysLogVO) {
         List<SysLog> logs = logService.listLogs(sysLogVO);
         long total = logService.countLogs(sysLogVO);
@@ -33,6 +38,7 @@ public class LogController {
     }
 
     @GetMapping("/download")
+    @Operation(summary = "导出日志列表")
     void download(HttpServletResponse response, SysLogPageVO sysLogVO) {
         logService.download(response, sysLogVO);
     }

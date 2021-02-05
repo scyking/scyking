@@ -20,6 +20,19 @@ public class SysLogPageVO extends Page {
 
     private LocalDateTime toCreateTime;
 
+    @Override
+    public void setPageNumber(int pageNumber) {
+        // Page.pageNumber 0是第一页，修改为1是第一页
+        super.setPageNumber(pageNumber - 1);
+    }
+
+    @Override
+    public int getPageNumber() {
+        // Page.pageNumber 0是第一页，修改为1是第一页
+        return super.getPageNumber() + 1;
+    }
+
+
     public SystemLogModuleEnum getLogType() {
         return logType;
     }
