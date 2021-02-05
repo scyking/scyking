@@ -14,9 +14,10 @@
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
+        <!-- common模块 包含了spring-boot-starter-web -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.scyking</groupId>
+            <artifactId>common</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -26,11 +27,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
-        <!-- common模块 -->
-        <dependency>
-            <groupId>com.scyking</groupId>
-            <artifactId>common</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>

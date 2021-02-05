@@ -1,6 +1,6 @@
 package com.scyking.common.base;
 
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * http 响应结果
@@ -8,7 +8,7 @@ import lombok.Data;
  *
  * @author scyking
  **/
-@Data
+@Getter
 public class BaseResponse<T> {
     public static final int SUCCESS = 200;
     public static final int ERROR = 500;

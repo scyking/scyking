@@ -39,7 +39,11 @@ public class UaaFilter implements GlobalFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         if (!enable) {
-            return chain.filter(exchange);
+            // 如果未开启 封装模拟转发信息 方便调试
+            ServerHttpRequest request = exchange.getRequest().mutate()
+                    .header(Constants.HEADER_USER_ID, "9527")
+                    .build();
+            return chain.filter(exchange.mutate().request(request).build());
         }
         String requestUrl = exchange.getRequest().getURI().getRawPath();
         // 在忽略的 url 里，则跳过
