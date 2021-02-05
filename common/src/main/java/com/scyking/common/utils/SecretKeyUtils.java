@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 
 import javax.crypto.SecretKey;
-import javax.validation.constraints.NotNull;
 
 /**
  * 秘钥对生成工具类
@@ -47,7 +46,7 @@ public class SecretKeyUtils {
      * @param sk 秘钥
      * @return
      */
-    private static String toHexString(@NotNull SecretKey sk) {
+    private static String toHexString(SecretKey sk) {
         byte[] bytes = sk.getEncoded();
         char[] chars = HexUtil.encodeHex(bytes);
         return new String(chars);
