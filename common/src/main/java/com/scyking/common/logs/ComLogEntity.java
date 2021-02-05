@@ -1,6 +1,7 @@
 package com.scyking.common.logs;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -9,12 +10,12 @@ import java.time.LocalDateTime;
  *
  * @author scyking
  **/
+@Data
 public class ComLogEntity<T> {
 
     private String id;
     private String optId;                          //操作用户id
     private String optAccount;                     //操作人账号
-    private String optName;                        //操作人name
 
     private T obj;                                  //操作主体
     private SystemLogModuleEnum logType;           //日志类型
