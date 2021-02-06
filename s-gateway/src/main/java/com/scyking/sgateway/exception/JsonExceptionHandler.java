@@ -97,19 +97,19 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
         HttpResult response = HttpResult.error();
         if (ex instanceof ResponseStatusException) {
             ResponseStatusException responseStatusException = (ResponseStatusException) ex;
-            response.setCode(responseStatusException.getStatus().value());
-            response.setMsg("响应异常，请联系管理员！");
+            response.code(responseStatusException.getStatus().value());
+            response.msg("响应异常，请联系管理员！");
         }
         if (ex instanceof FeignException) {
-            response.setCode(HttpStatus.UNAUTHORIZED.value());
-            response.setMsg("token失效，请重新登录！");
+            response.code(HttpStatus.UNAUTHORIZED.value());
+            response.msg("token失效，请重新登录！");
         }
         if (ex instanceof IllegalArgumentException) {
-            response.setMsg("传参错误，请检查参数！");
+            response.msg("传参错误，请检查参数！");
         }
         if (ex instanceof NotFoundException) {
-            response.setCode(HttpStatus.SERVICE_UNAVAILABLE.value());
-            response.setMsg("未查询到接口信息，请联系管理员！");
+            response.code(HttpStatus.SERVICE_UNAVAILABLE.value());
+            response.msg("未查询到接口信息，请联系管理员！");
         }
         exceptionHandlerResult.set(response);
     }

@@ -2,13 +2,16 @@ package com.scyking.sgateway.filter;
 
 import cn.hutool.json.JSONUtil;
 import com.scyking.common.base.HttpResult;
+import com.scyking.common.base.UserInfo;
 import com.scyking.common.utils.Constants;
 import com.scyking.common.utils.ResponseUtils;
 import com.scyking.sgateway.client.UserAuthClient;
+import com.scyking.sgateway.utils.GatewayConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -24,11 +27,13 @@ import java.util.List;
 
 /**
  * 网关统一鉴权
+ * <p>
+ * User Account and Authentication
  *
  * @author scyking
  **/
 @Component
-public class UaaFilter implements GlobalFilter {
+public class UaaFilter implements GlobalFilter, Ordered {
 
     @Value("${scyking.uaa.enable:false}")
     boolean enable;
@@ -55,15 +60,14 @@ public class UaaFilter implements GlobalFilter {
         if (!StringUtils.hasText(headerToken)) {
             return noPower(exchange);
         }
-        HttpResult resp = userAuthClient.checkUserToken(headerToken);
+        HttpResult<UserInfo> resp = userAuthClient.checkUserToken(headerToken);
         // 鉴权失败！
         if (!ResponseUtils.hasData(resp)) {
             return noPower(exchange);
         }
         // 封装转发信息
-        //todo something
         ServerHttpRequest request = exchange.getRequest().mutate()
-                .header(Constants.HEADER_USER_ID, "test")
+                .header(Constants.HEADER_USER_ID, resp.getData().getUserId().toString())
                 .build();
         return chain.filter(exchange.mutate().request(request).build());
     }
@@ -93,5 +97,10 @@ public class UaaFilter implements GlobalFilter {
         response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
         return response.writeWith(Mono.just(buffer));
 
+    }
+
+    @Override
+    public int getOrder() {
+        return GatewayConstants.ORDER_UAA_FILTER;
     }
 }

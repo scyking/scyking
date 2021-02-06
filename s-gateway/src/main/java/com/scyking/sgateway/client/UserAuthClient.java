@@ -1,6 +1,7 @@
 package com.scyking.sgateway.client;
 
 import com.scyking.common.base.HttpResult;
+import com.scyking.common.base.UserInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,5 +18,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name = "u-center", fallback = UserAuthClientFallback.class)
 public interface UserAuthClient {
     @RequestMapping(value = "/interface/user/info", method = RequestMethod.GET)
-    HttpResult<?> checkUserToken(@RequestHeader("Authorization") String auth);
+    HttpResult<UserInfo> checkUserToken(@RequestHeader("Authorization") String auth);
 }
