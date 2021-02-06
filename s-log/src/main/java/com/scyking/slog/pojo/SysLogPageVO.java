@@ -3,6 +3,7 @@ package com.scyking.slog.pojo;
 import cn.hutool.db.Page;
 import com.scyking.common.logs.SystemLogModuleEnum;
 import com.scyking.common.logs.SystemLogTypeEnum;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -16,8 +17,10 @@ public class SysLogPageVO extends Page {
 
     private SystemLogTypeEnum optType;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fromCreateTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime toCreateTime;
 
     @Override
