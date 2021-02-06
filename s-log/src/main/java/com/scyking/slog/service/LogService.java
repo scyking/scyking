@@ -1,5 +1,6 @@
 package com.scyking.slog.service;
 
+import com.scyking.common.logs.ComLogEntity;
 import com.scyking.slog.pojo.SysLog;
 import com.scyking.slog.pojo.SysLogPageVO;
 
@@ -12,6 +13,8 @@ import java.util.List;
 public interface LogService {
 
     void insertLog(SysLog sysLog);
+
+    void insertLog(ComLogEntity comLogEntity);
 
     void insertLogs(List<SysLog> sysLogs);
 

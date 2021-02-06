@@ -2,9 +2,11 @@ package com.scyking.slog.service.impl;
 
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
+import com.scyking.common.logs.ComLogEntity;
 import com.scyking.common.utils.ExcelUtils;
 import com.scyking.common.utils.Excels;
 import com.scyking.common.utils.JsonUtils;
+import com.scyking.slog.adapter.PojoAdapter;
 import com.scyking.slog.pojo.SysLog;
 import com.scyking.slog.pojo.SysLogPageVO;
 import com.scyking.slog.service.LogService;
@@ -24,14 +26,17 @@ import java.util.List;
 public class LogServiceImpl implements LogService {
 
     @Autowired
-    QueryUtils queryUtils;
-
-    @Autowired
     MongoTemplate mongoTemplate;
 
     @Override
     public void insertLog(SysLog sysLog) {
         mongoTemplate.insert(sysLog);
+    }
+
+    @Override
+    public void insertLog(ComLogEntity comLogEntity) {
+        SysLog sysLog = PojoAdapter.comLogEntity2SysLog(comLogEntity);
+        insertLog(sysLog);
     }
 
     @Override
@@ -46,17 +51,17 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public List<SysLog> listLogs(SysLogPageVO vo) {
-        return mongoTemplate.find(queryUtils.buildPage(vo), SysLog.class);
+        return mongoTemplate.find(QueryUtils.buildPage(vo), SysLog.class);
     }
 
     @Override
     public List<SysLog> listAllLogs(SysLogPageVO vo) {
-        return mongoTemplate.find(queryUtils.build(vo), SysLog.class);
+        return mongoTemplate.find(QueryUtils.build(vo), SysLog.class);
     }
 
     @Override
     public long countLogs(SysLogPageVO vo) {
-        return mongoTemplate.count(queryUtils.build(vo), SysLog.class);
+        return mongoTemplate.count(QueryUtils.build(vo), SysLog.class);
     }
 
     @Override

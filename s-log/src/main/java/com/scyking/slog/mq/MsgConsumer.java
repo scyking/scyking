@@ -3,8 +3,6 @@ package com.scyking.slog.mq;
 import com.scyking.common.logs.ComLogEntity;
 import com.scyking.common.utils.Constants;
 import com.scyking.common.utils.JsonUtils;
-import com.scyking.slog.adapter.PojoAdapter;
-import com.scyking.slog.pojo.SysLog;
 import com.scyking.slog.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -33,7 +31,6 @@ public class MsgConsumer {
         String msg = new String(massage.getBody(), StandardCharsets.UTF_8);
         log.info("received message : " + msg);
         ComLogEntity comLogEntity = JsonUtils.json2Object(msg, ComLogEntity.class);
-        SysLog sysLog = PojoAdapter.comLogEntity2SysLog(comLogEntity);
-        logService.insertLog(sysLog);
+        logService.insertLog(comLogEntity);
     }
 }
