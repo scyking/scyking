@@ -47,7 +47,7 @@ public class MailServiceImpl implements MailService {
 
     }
 
-    public String getMailSendFrom() {
+    private String getMailSendFrom() {
         return mailSender.getJavaMailProperties().getProperty("from");
     }
 
@@ -79,5 +79,4 @@ public class MailServiceImpl implements MailService {
             throw new RuntimeException(e);
         }
     }
-}
 }
