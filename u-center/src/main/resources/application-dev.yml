@@ -36,6 +36,12 @@ spring:
     schema: classpath:db/schema.sql
     data: classpath:db/data.sql # 重复启动，会导致主键冲突，从而报错
     continue-on-error: true # false ：sql脚本出错终止服务；true ：继续服务
+  mail:
+    host: #SMTP服务器地址
+    username:
+    password:
+    properties:
+      from: scyking@hotmail.com #邮件发信人
 
 eureka:
   instance:
